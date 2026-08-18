@@ -69,17 +69,50 @@ Tamaño (20, 30 o 40 cm): 30
 
 ### Validaciones de Registro
 
-La aplicación valida automáticamente los datos ingresados:
+La aplicación valida automáticamente los datos ingresados antes de registrar:
 
-| Campo | Regla de Validación |
-|-------|-------------------|
-| **Nombre** | No puede estar vacío o contener solo espacios |
-| **Precio** | Debe ser mayor a cero (> 0) |
-| **Tamaño** | Solo se aceptan: 20, 30 o 40 centímetros |
+| Campo | Regla de Validación | Ejemplo de Error |
+|-------|-------------------|------------------|
+| **Nombre** | No puede estar vacío o contener solo espacios | "El nombre de la pizza no puede estar vacío." |
+| **Precio** | Debe ser mayor a cero (> 0) | "El precio debe ser mayor a cero." |
+| **Tamaño** | Solo se aceptan: 20, 30 o 40 centímetros | "El tamaño debe ser 20, 30 o 40 centímetros." |
 
-**Ejemplo de error de validación:**
+**Importante**: Las pizzas con datos inválidos **NO se registran** en el catálogo ni se guardan en el archivo de datos.
+
+#### Ejemplos de Validaciones
+
+**1. Nombre Vacío**
 ```
+Nombre: [presionar Enter sin ingresar nada]
+Error: El nombre de la pizza no puede estar vacío.
+```
+
+**2. Precio Inválido**
+```
+Precio: 0
 Error: El precio debe ser mayor a cero.
+
+Precio: -10
+Error: El precio debe ser mayor a cero.
+```
+
+**3. Tamaño Inválido**
+```
+Tamaño: 25
+Error: El tamaño debe ser 20, 30 o 40 centímetros.
+
+Tamaño: 50
+Error: El tamaño debe ser 20, 30 o 40 centímetros.
+```
+
+**4. Datos Válidos**
+```
+Nombre: Hawaiana
+Descripción: Pizza tropical con piña y jamón
+Precio: 15.99
+Tamaño: 40
+
+✓ Pizza registrada exitosamente con ID: 1
 ```
 
 ### Opción 2: Consultar Pizzas Registradas
@@ -205,6 +238,16 @@ Características planeadas para futuras versiones:
 - 🔎 Buscar/filtrar pizzas por criterios (nombre, precio, tamaño)
 - 📊 Estadísticas del catálogo
 - 🎨 Interfaz gráfica mejorada
+
+## Documentación de Validaciones
+
+Para información detallada sobre las validaciones implementadas, incluyendo:
+- Descripción técnica de cada validación
+- Casos de prueba ejecutados
+- Resultados de validación
+- Integridad de datos
+
+Consulte: [VALIDATIONS_REPORT.md](VALIDATIONS_REPORT.md)
 
 ## Desarrollo
 
