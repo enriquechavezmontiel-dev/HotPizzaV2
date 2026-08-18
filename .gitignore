@@ -1,0 +1,19 @@
+## Build results
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+*.runtimeconfig.json
+
+## Data files
+pizzas.json
+
+## IDE
+.vs/
+.vscode/
+*.user
+*.suo
+
+## Test files
+test-app.ps1
