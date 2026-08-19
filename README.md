@@ -148,11 +148,15 @@ HotPizzaV2/
 │   └── Pizza.cs            # Modelo de datos de Pizza
 ├── Services/
 │   └── PizzaRepository.cs   # Gestión de datos y persistencia
+├── HotPizza.Tests/
+│   ├── HotPizza.Tests.csproj      # Proyecto de pruebas unitarias xUnit
+│   └── PizzaRepositoryTests.cs    # Pruebas del repositorio de pizzas
 ├── .github/
 │   └── prompts/            # Prompts personalizados para Copilot
 │       ├── create-pizza.prompt.md
 │       ├── list-pizzas.prompt.md
-│       └── validate-pizzas.prompt.md
+│       ├── validate-pizzas.prompt.md
+│       └── test-pizza-features.prompt.md
 ├── .gitignore              # Configuración de git
 └── README.md               # Este archivo
 ```
@@ -249,6 +253,26 @@ Para información detallada sobre las validaciones implementadas, incluyendo:
 
 Consulte: [VALIDATIONS_REPORT.md](VALIDATIONS_REPORT.md)
 
+## Pruebas Unitarias
+
+El proyecto `HotPizza.Tests` utiliza xUnit y prueba el comportamiento de `PizzaRepository` con archivos JSON temporales, por lo que no altera el archivo `pizzas.json` de la aplicación.
+
+La suite cubre:
+- Registro de pizzas válidas e identificadores asignados.
+- Consulta de todas las pizzas registradas.
+- Rechazo de nombres vacíos o compuestos solo por espacios.
+- Rechazo de precios menores o iguales a cero.
+- Rechazo de tamaños distintos de 20, 30 o 40 centímetros.
+- Persistencia de las pizzas al crear una nueva instancia del repositorio.
+
+### Ejecutar las pruebas
+
+```bash
+dotnet test ./HotPizza.Tests/HotPizza.Tests.csproj
+```
+
+La última ejecución verificó 10 pruebas aprobadas, sin pruebas fallidas ni omitidas.
+
 ## Desarrollo
 
 ### Compilar solo
@@ -256,9 +280,9 @@ Consulte: [VALIDATIONS_REPORT.md](VALIDATIONS_REPORT.md)
 dotnet build
 ```
 
-### Ejecutar tests (cuando estén disponibles)
+### Ejecutar tests
 ```bash
-dotnet test
+dotnet test ./HotPizza.Tests/HotPizza.Tests.csproj
 ```
 
 ### Limpiar artefactos de compilación
@@ -301,6 +325,7 @@ Para reportar problemas o sugerencias:
 - ✨ Consulta de catálogo
 - ✨ Validaciones de datos
 - ✨ Persistencia en JSON
+- ✅ Pruebas unitarias con xUnit para registro, consulta, validaciones y persistencia
 - 📚 Documentación completa
 
 ---
